@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 근골격계부담작업 유해요인조사 · 국립산림과학원</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#F7F6F2; --paper:#FFFFFF; --soft:#FAF9F6;
+  --ink:#1A222C; --ink2:#36414D; --muted:#646D77; --faint:#959CA4;
+  --line:#E4E2DB; --line2:#EEECE6;
+  --navy:#1E2B3B; --forest:#2F5D4B; --sage:#9FB29C; --sage-bg:#EEF2EB; --sage-bg2:#F5F7F3;
+  --amber:#9C6B25; --amber-bg:#FBF4E8; --red:#A54A3E; --red-bg:#F8EDEA;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --top:112px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:16px;line-height:1.8;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3,h4{margin:0;font-weight:650;letter-spacing:-.025em;line-height:1.35}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--forest);outline-offset:2px;border-radius:4px}
+
+/* ---------- site header + main tabs ---------- */
+.site-top{position:sticky;top:0;z-index:50;background:rgba(247,246,242,.92);backdrop-filter:blur(10px) saturate(1.3);border-bottom:1px solid var(--line)}
+.bar{max-width:1280px;margin:0 auto;padding:0 28px;height:60px;display:flex;align-items:center;gap:14px}
+.mark{width:32px;height:32px;border-radius:9px;background:var(--navy);display:grid;place-items:center;flex:none}
+.mark svg{width:17px;height:17px}
+.title{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.title b{font-size:14.5px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title span{font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+.bar .sp{flex:1}
+.print-btn{border:1px solid var(--line);background:var(--paper);height:34px;padding:0 12px;border-radius:8px;font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:6px;transition:border-color .2s,color .2s}
+.print-btn:hover{border-color:var(--forest);color:var(--forest)}
+.print-btn svg{width:15px;height:15px}
+.tabs{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;gap:2px;height:52px;align-items:stretch;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:none;padding:0 16px;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.tab .n{font-size:12px;font-variant-numeric:tabular-nums;color:var(--faint);font-weight:600}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected=true]{color:var(--ink);border-color:var(--navy)}
+.tab[aria-selected=true] .n{color:var(--forest)}
+.tab .soon{font-size:11px;font-weight:600;color:var(--faint);background:#ECEAE4;border-radius:999px;padding:1px 8px}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--forest);width:0;transition:width .1s linear}
+
+.panel{display:none}
+.panel.on{display:block;animation:fade .35s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- report layout ---------- */
+.report{max-width:1280px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:248px minmax(0,1fr);gap:56px}
+.toc{position:sticky;top:calc(var(--top) + 28px);align-self:start;max-height:calc(100vh - var(--top) - 56px);overflow:auto;padding:4px 0 24px;font-size:13.5px}
+.toc-h{font-size:11px;letter-spacing:.16em;color:var(--faint);font-weight:600;margin-bottom:12px}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc>ol>li{margin-bottom:14px}
+.toc a{text-decoration:none;display:block;color:var(--muted);padding:3px 0 3px 12px;border-left:2px solid transparent;transition:color .2s,border-color .2s;line-height:1.5}
+.toc>ol>li>a{color:var(--ink2);font-weight:600}
+.toc ol ol a{font-size:13px;padding-left:22px}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--forest);border-color:var(--forest)}
+.toc-mobile{display:none}
+
+.doc{max-width:820px;padding:56px 0 120px}
+.cover{padding:8px 0 40px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--forest);font-weight:600}
+.cover h1{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.04em;line-height:1.22;margin:14px 0 18px}
+.cover .lede{font-size:17px;color:var(--ink2);line-height:1.85}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:32px;border-top:1px solid var(--line)}
+.facts div{padding:16px 14px 0 0}
+.facts b{display:block;font-size:24px;font-weight:650;letter-spacing:-.03em;color:var(--navy)}
+.facts span{font-size:12.5px;color:var(--muted);line-height:1.5;display:block}
+.basis{margin-top:22px;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.basis svg{flex:none;width:15px;height:15px;margin-top:3px;color:var(--faint)}
+
+.chapter{padding-top:72px;scroll-margin-top:calc(var(--top) + 8px)}
+.ch-head{display:flex;align-items:flex-end;gap:20px;padding-bottom:18px;border-bottom:1.5px solid var(--navy);margin-bottom:8px}
+.ch-num{font-size:56px;font-weight:700;line-height:.9;color:var(--navy);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.ch-head h2{font-size:27px;font-weight:700;padding-bottom:4px}
+.ch-head .en{font-size:11.5px;letter-spacing:.16em;color:var(--faint);font-weight:600;display:block;margin-bottom:4px}
+.sec{padding-top:44px;scroll-margin-top:calc(var(--top) + 8px)}
+.sec>h3{font-size:20px;margin-bottom:16px;display:flex;gap:12px;align-items:baseline}
+.sec>h3 .no{color:var(--forest);font-variant-numeric:tabular-nums;font-weight:700}
+.doc p+p{margin-top:14px}
+.doc p{color:var(--ink2)}
+h4.sub{font-size:16.5px;margin:30px 0 12px;display:flex;gap:10px;align-items:center}
+h4.sub .k{display:inline-grid;place-items:center;min-width:26px;height:26px;padding:0 6px;border-radius:7px;background:var(--sage-bg);color:var(--forest);font-size:13px;font-weight:700}
+.lead{font-size:17px;line-height:1.9;color:var(--ink)!important}
+mark{background:linear-gradient(transparent 60%,rgba(159,178,156,.35) 60%);color:inherit;padding:0 1px}
+
+ul.dot{list-style:none;margin:12px 0 0;padding:0}
+ul.dot li{position:relative;padding-left:16px;margin:6px 0;color:var(--ink2)}
+ul.dot li::before{content:"";position:absolute;left:2px;top:.78em;width:5px;height:5px;border-radius:50%;background:var(--sage)}
+ol.num{margin:12px 0 0;padding-left:22px;color:var(--ink2)}
+ol.num li{margin:6px 0;padding-left:4px}
+ol.num li::marker{color:var(--forest);font-weight:700}
+
+/* law box */
+.law{margin:18px 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);overflow:hidden}
+.law-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 18px;background:var(--soft);border-bottom:1px solid var(--line2);font-size:14px;font-weight:650;color:var(--navy)}
+.law-h small{font-size:12px;font-weight:500;color:var(--faint)}
+.law-b{padding:14px 18px;font-size:14.5px;line-height:1.8;color:var(--ink2)}
+.law-b ol,.law-b ul{margin:6px 0 0;padding-left:20px}
+.law-b li{margin:4px 0}
+.law-b .ind{display:block;margin-top:8px}
+.law.collapsible .law-h{cursor:pointer;user-select:none}
+.law.collapsible .law-h::after{content:"+";font-size:18px;font-weight:400;color:var(--faint);transition:transform .25s var(--ease)}
+.law.collapsible.open .law-h::after{transform:rotate(45deg)}
+.law.collapsible .law-b{display:none}
+.law.collapsible.open .law-b{display:block;animation:fade .25s var(--ease)}
+
+.callout{margin:20px 0;padding:16px 20px;border-left:3px solid var(--sage);background:var(--sage-bg2);border-radius:0 10px 10px 0;font-size:15px;color:var(--ink2)}
+.callout.warn{border-color:var(--amber);background:var(--amber-bg)}
+.callout b{color:var(--ink);font-weight:650}
+
+/* tables */
+.tbl{margin:20px 0 6px;overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:11px 14px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+thead th{background:var(--soft);font-size:13px;font-weight:600;color:var(--muted)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:600;color:var(--ink);background:var(--soft);white-space:nowrap}
+td.c,th.c{text-align:center}
+td.score{width:76px;text-align:center;font-weight:700;color:var(--forest);font-size:16px;font-variant-numeric:tabular-nums}
+tbody tr{transition:background .15s}
+.hover tbody tr:hover{background:var(--sage-bg2)}
+.cap{font-size:13px;color:var(--muted);text-align:center;margin:10px 0 0}
+.cap b{color:var(--ink2);font-weight:600;margin-right:6px}
+
+/* figures */
+figure{margin:24px 0 8px}
+figure .frame{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper);cursor:zoom-in}
+figure .frame img{width:100%;transition:transform .5s var(--ease)}
+figure .frame:hover img{transform:scale(1.015)}
+figure .frame::after{content:"확대";position:absolute;right:10px;top:10px;font-size:11.5px;font-weight:600;color:#fff;background:rgba(30,43,59,.72);padding:3px 9px;border-radius:999px;opacity:0;transition:opacity .2s}
+figure .frame:hover::after{opacity:1}
+figcaption{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+figcaption b{color:var(--ink2);font-weight:600;margin-right:6px}
+.wide{margin-left:-24px;margin-right:-24px}
+.fig-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fig-row .frame{border-radius:10px}
+.fig-row .lbl{font-size:13px;font-weight:600;text-align:center;margin-top:8px;color:var(--ink2)}
+.fig-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* burden work */
+.bw-index{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 4px}
+.bw-index a{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;background:var(--paper);text-decoration:none;font-size:13.5px;font-weight:650;font-variant-numeric:tabular-nums;transition:all .2s var(--ease)}
+.bw-index a:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bw-index .fl{font-size:12.5px;color:var(--muted);align-self:center;margin-right:6px}
+.bw{margin-top:22px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden;scroll-margin-top:calc(var(--top) + 16px);transition:box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.bw:hover{box-shadow:0 2px 6px rgba(26,34,44,.05),0 14px 30px rgba(26,34,44,.07);border-color:#D8D5CC}
+.bw-head{display:flex;align-items:center;gap:14px;padding:14px 20px;background:var(--soft);border-bottom:1px solid var(--line2)}
+.bw-head .no{font-size:13px;font-weight:700;color:#fff;background:var(--navy);border-radius:7px;padding:3px 10px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bw-head h4{font-size:17px}
+.bw-head .tag{margin-left:auto;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--sage-bg);color:var(--forest);white-space:nowrap}
+.bw-head .tag.posture{background:#E8ECF1;color:var(--navy)}
+.bw-head .tag.force{background:var(--amber-bg);color:var(--amber)}
+.bw-head .tag.contact{background:var(--red-bg);color:var(--red)}
+.bw-body{display:grid;grid-template-columns:200px 1fr;gap:22px;padding:20px}
+.bw-body .frame{border-radius:10px;border:1px solid var(--line2);overflow:hidden;cursor:zoom-in;align-self:start}
+.bw-crit{font-size:16px;font-weight:550;line-height:1.75;color:var(--ink)}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.kv div{border:1px solid var(--line2);border-radius:9px;padding:9px 12px;background:var(--soft)}
+.kv span{display:block;font-size:11.5px;color:var(--faint);font-weight:600;letter-spacing:.02em}
+.kv b{font-size:14px;font-weight:600;line-height:1.5;display:block}
+.bw-note{margin-top:14px;font-size:14px;color:var(--ink2)}
+.bw-note li{margin:4px 0}
+.bw-note .t{font-weight:600;color:var(--ink)}
+
+/* flow (html diagram) */
+.flowv{display:grid;gap:0;max-width:520px;margin:24px auto 0}
+.node{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:11px 16px;text-align:center;font-size:14.5px;font-weight:600}
+.node.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.node.q{background:var(--sage-bg);border-color:var(--sage)}
+.arrow{text-align:center;font-size:12.5px;color:var(--faint);line-height:1;padding:6px 0}
+.flow-wrap{display:grid;grid-template-columns:1fr 210px;gap:18px;align-items:start;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.side-note{border:1px solid var(--line2);border-radius:10px;padding:12px 14px;background:var(--soft);font-size:13.5px;color:var(--ink2)}
+.side-note b{display:block;font-size:12.5px;color:var(--navy);margin-bottom:4px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.box{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px 20px}
+.box h5{margin:0 0 8px;font-size:15.5px;font-weight:650;display:flex;gap:8px;align-items:center}
+.box .chip{font-size:11.5px;font-weight:600;padding:1px 9px;border-radius:999px;background:var(--sage-bg);color:var(--forest)}
+.box .chip.n{background:#E8ECF1;color:var(--navy)}
+.box .chip.a{background:var(--amber-bg);color:var(--amber)}
+.box .chip.r{background:var(--red-bg);color:var(--red)}
+.box p{font-size:14.5px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pills span{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:550;color:var(--ink2)}
+
+/* REBA */
+.reba-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.reba-steps div{border:1px solid var(--line);border-radius:11px;background:var(--paper);padding:14px}
+.reba-steps b{display:block;font-size:13px;color:var(--forest);margin-bottom:4px}
+.reba-steps span{font-size:13.5px;color:var(--ink2);line-height:1.6;display:block}
+.reba-block{margin-top:30px}
+.reba-block h5{font-size:15.5px;margin:0 0 4px;font-weight:650}
+.matrix{font-variant-numeric:tabular-nums}
+.matrix th,.matrix td{text-align:center;padding:8px 6px;border-right:1px solid var(--line2);min-width:36px}
+.matrix td.hl,.matrix th.hl{background:var(--sage-bg)!important;color:var(--forest)}
+.matrix td.hit{background:var(--navy)!important;color:#fff;font-weight:700}
+.al{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:16px}
+.al div{border:1px solid var(--line);border-radius:11px;padding:14px 12px;background:var(--paper)}
+.al .lv{font-size:11.5px;color:var(--faint);font-weight:600}
+.al .sc{font-size:24px;font-weight:700;letter-spacing:-.03em;margin:2px 0}
+.al .rk{font-size:14px;font-weight:650}
+.al .ac{font-size:12.5px;color:var(--muted)}
+.al .l3{background:var(--amber-bg);border-color:#EED9B8}
+.al .l4{background:var(--red-bg);border-color:#EBCCC6}
+.al .l4 .rk,.al .l4 .ac{color:var(--red)}
+
+/* compare / cycle / vertical flow */
+.compare{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);margin-top:18px}
+.compare>div{padding:22px 24px}
+.compare>div+div{border-left:1px solid var(--line)}
+.compare .en{font-size:11px;letter-spacing:.14em;color:var(--faint);font-weight:600;text-transform:uppercase}
+.compare h5{font-size:19px;margin:4px 0 8px;font-weight:700}
+.compare .def{font-size:14px;color:var(--muted);min-height:72px}
+.compare ul{list-style:none;padding:0;margin:12px 0 0}
+.compare li{padding:8px 10px;border-radius:8px;font-size:14.5px;border-bottom:1px dashed var(--line2);transition:background .2s}
+.compare li:last-child{border-bottom:0}
+.compare li:hover{background:var(--sage-bg2)}
+.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.cyc{position:relative;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:16px;text-align:left;transition:border-color .2s,box-shadow .2s}
+.cyc .s{font-size:11px;color:var(--faint);letter-spacing:.1em;font-weight:600}
+.cyc h6{margin:6px 0 8px;font-size:15px;font-weight:650}
+.cyc ul{margin:0;padding-left:16px;font-size:13.5px;color:var(--ink2)}
+.cyc:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translate(50%,-50%);color:var(--faint);font-size:13px}
+.cyc:hover,.cyc.on{border-color:var(--navy);box-shadow:0 8px 22px rgba(26,34,44,.08)}
+.cycle-note{margin-top:10px;font-size:13.5px;color:var(--muted);text-align:center}
+.vflow{margin-top:20px;display:grid}
+.vstep{display:grid;grid-template-columns:40px 1fr;gap:14px;position:relative}
+.vstep::before{content:"";position:absolute;left:19.5px;top:40px;bottom:0;width:1px;background:var(--line)}
+.vstep:last-child::before{display:none}
+.vstep .b{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--forest);transition:all .2s}
+.vstep:hover .b{background:var(--navy);border-color:var(--navy);color:#fff}
+.vstep .t{padding:8px 0 20px}
+.vstep .t b{font-size:15.5px;font-weight:650;display:block}
+.vstep .t span{font-size:14px;color:var(--muted);display:block;margin-top:2px}
+.vstep .branch{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--amber);background:var(--amber-bg);border-radius:6px;padding:1px 8px}
+.keep{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.keep div{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px}
+.keep span{font-size:13px;color:var(--muted)}
+.keep b{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--navy);margin:6px 0 2px}
+.keep b.sm{font-size:17px;line-height:1.45;margin-top:10px}
+
+.end{margin-top:80px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.next{margin-top:56px;display:flex;justify-content:flex-end}
+.next button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:16px 20px;text-align:left;min-width:280px;transition:border-color .2s,box-shadow .2s}
+.next button:hover{border-color:var(--navy);box-shadow:0 8px 22px rgba(26,34,44,.08)}
+.next small{display:block;font-size:12px;color:var(--faint)}
+.next b{font-size:16px}
+
+/* placeholder tabs */
+.wait{max-width:820px;margin:0 auto;padding:90px 28px 140px}
+.wait h1{font-size:34px;font-weight:700;letter-spacing:-.04em;margin:12px 0 14px}
+.wait p{color:var(--ink2);font-size:16px}
+.wait ul{margin:24px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.wait li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;font-size:15px}
+.wait li span{color:var(--faint);font-variant-numeric:tabular-nums;font-weight:600;font-size:13px;padding-top:2px}
+.wait .state{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:13.5px;color:var(--muted);border:1px dashed #CFCBC1;border-radius:10px;padding:10px 14px;background:var(--soft)}
+
+/* lightbox + top */
+.lb{position:fixed;inset:0;background:rgba(18,24,32,.86);z-index:90;display:none;align-items:center;justify-content:center;padding:28px;flex-direction:column;gap:12px}
+.lb.open{display:flex;animation:fade .2s}
+.lb img{max-width:min(1200px,100%);max-height:84vh;border-radius:10px;background:#fff}
+.lb p{color:#E8ECEF;font-size:14px;text-align:center}
+.lb button{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:20px}
+.totop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 8px 22px rgba(26,34,44,.1);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.totop.show{opacity:1;pointer-events:auto}
+.totop svg{width:18px;height:18px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1060px){
+  .report{grid-template-columns:minmax(0,1fr);gap:0}
+  .chapter,.sec,.bw{scroll-margin-top:calc(var(--top) + 72px)}
+  .toc{display:none}
+  .toc-mobile{display:block;position:sticky;top:var(--top);z-index:30;margin:0 -28px;padding:10px 28px;background:rgba(247,246,242,.95);border-bottom:1px solid var(--line)}
+  .toc-mobile select{width:100%;height:40px;border:1px solid var(--line);border-radius:9px;background:var(--paper);font:inherit;font-size:14px;padding:0 12px;color:var(--ink)}
+  .doc{max-width:none;padding-top:32px}
+  .wide{margin-left:0;margin-right:0}
+}
+@media (max-width:680px){
+  :root{--top:104px}
+  body{font-size:15.5px}
+  .bar,.tabs,.report{padding-left:16px;padding-right:16px}
+  .toc-mobile{margin:0 -16px;padding:10px 16px}
+  .bar{height:56px}
+  .title span{display:none}
+  .print-btn span{display:none}
+  .tabs{height:48px}
+  .tab{padding:0 10px;font-size:14px}
+  .tab .soon{display:none}
+  .facts{grid-template-columns:1fr 1fr}
+  .ch-num{font-size:42px}
+  .ch-head h2{font-size:22px}
+  .bw-body{grid-template-columns:1fr}
+  .bw-body .frame{max-width:240px}
+  .bw-head{flex-wrap:wrap}
+  .bw-head .tag{margin-left:0}
+  .kv,.two,.fig-2,.compare,.keep,.reba-steps,.al{grid-template-columns:1fr}
+  .compare>div+div{border-left:0;border-top:1px solid var(--line)}
+  .fig-row{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .flow-wrap{grid-template-columns:1fr}
+  .cycle{grid-template-columns:1fr 1fr}
+  .cyc:not(:last-child)::after{display:none}
+  th,td{padding:9px 10px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .site-top,.toc,.toc-mobile,.totop,.next,.print-btn,.bw-index{display:none!important}
+  .report{display:block;padding:0}
+  .doc{max-width:none;padding:0}
+  .panel{display:none!important}.panel.print{display:block!important}
+  .chapter{break-before:page;padding-top:0}
+  .bw,figure,.law,.tbl,.box{break-inside:avoid}
+  .law.collapsible .law-b{display:block}
+  .wide{margin:0}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================
+     SITE HEADER — 상단 탭은 사이트 전체의 주 메뉴입니다.
+     새 탭을 추가할 때: (1) .tabs에 버튼 추가 (2) <main>에 같은 id의 .panel 추가
+     ===================================================== -->
+<header class="site-top" id="siteTop">
+  <div class="bar">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#CFE0CB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l6 9h-4l4 6H6l4-6H6z"/><path d="M12 18v3"/></svg></span>
+    <div class="title"><b>2026 근골격계부담작업 유해요인조사</b><span>NATIONAL INSTITUTE OF FOREST SCIENCE</span></div>
+    <div class="sp"></div>
+    <button class="print-btn" id="printBtn" aria-label="현재 탭 인쇄"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 9V3h10v6M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="7" rx="1"/></svg><span>인쇄</span></button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="보고서 구성">
+    <button class="tab" role="tab" data-panel="overview" aria-selected="true"><span class="n">01</span>근골격계 유해요인조사 이해</button>
+    <button class="tab" role="tab" data-panel="survey" aria-selected="false"><span class="n">02</span>설문조사 통계<span class="soon">준비 중</span></button>
+    <button class="tab" role="tab" data-panel="process" aria-selected="false"><span class="n">03</span>공정별 유해요인조사<span class="soon">준비 중</span></button>
+  </nav>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main>
+<!-- =====================================================
+     TAB 01 — 근골격계 유해요인조사 이해 (보고서형)
+     ===================================================== -->
+<section class="panel on" id="overview" role="tabpanel">
+<div class="report">
+  <aside class="toc" aria-label="목차">
+    <div class="toc-h">CONTENTS</div>
+    <ol id="tocList"></ol>
+  </aside>
+
+  <article class="doc" id="doc">
+    <div class="toc-mobile"><label class="sr" for="tocSel" style="position:absolute;left:-9999px">목차 이동</label><select id="tocSel"></select></div>
+
+    <header class="cover">
+      <div class="eyebrow">PART 01 · UNDERSTANDING MSD RISK ASSESSMENT</div>
+      <h1>근골격계부담작업<br>유해요인조사의 이해</h1>
+      <p class="lede">근골격계질환은 반복적인 동작, 부적절한 작업자세, 무리한 힘의 사용 등으로 목·어깨·허리·팔다리에 나타나는 건강장해입니다. 이 장에서는 국립산림과학원 유해요인조사 결과를 읽기 전에 알아야 할 <mark>근골격계질환의 개념, 법적 근거, 11가지 부담작업의 판단 기준, 조사·평가 방법, 개선과 예방관리 체계</mark>를 정리합니다.</p>
+      <div class="facts">
+        <div><b>11종</b><span>근골격계부담작업</span></div>
+        <div><b>3년마다</b><span>정기 유해요인조사</span></div>
+        <div><b>1개월 이내</b><span>수시 유해요인조사</span></div>
+        <div><b>5년</b><span>조사표 기록 보존</span></div>
+      </div>
+      <p class="basis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>본문의 법령 조문은 산업안전보건법(제39조 2024.10.22. 개정), 산업안전보건기준에 관한 규칙, 고용노동부고시 제2020-12호(2020.1.6. 일부개정)를 기준으로 작성했습니다. 이후 개정 여부는 국가법령정보센터에서 확인하시기 바랍니다.</p>
+    </header>
+
+    <!-- ===================== CHAPTER 1 ===================== -->
+    <section class="chapter" id="c1" data-toc="조사개요">
+      <div class="ch-head"><span class="ch-num">01</span><div><span class="en">OVERVIEW</span><h2>조사개요</h2></div></div>
+
+      <div class="sec" id="c1-1" data-toc="근골격계질환의 개요">
+        <h3><span class="no">1.1</span>근골격계질환의 개요</h3>
+        <p class="lead">근골격계질환이란 작업량·작업속도·작업강도 및 작업구조 등에 따라 발생하는 건강장해를 의미한다. 이는 반복적인 동작, 부적절한 작업 자세, 과도한 힘의 사용, 접촉 스트레스, 진동 및 온도 등 다양한 유해요인으로 인해 목, 어깨, 허리, 팔다리의 신경·근육 및 그 주변 신체 조직에 나타나는 질환을 포괄한다.</p>
+        <p>특히 단순 반복 작업이나 중량물 취급 등 인체에 과도한 부담을 주는 작업은 이러한 질환의 이환 위험을 크게 높이는 주요 원인으로 작용한다.</p>
+        <div class="tbl">
+          <table class="hover">
+            <thead><tr><th>신체부위</th><th>질환명</th></tr></thead>
+            <tbody>
+              <tr><th>척추</th><td>요통, 후종인대골화증, 추간판탈출증, 척추협착증, 척추분리증, 척추전방전위증</td></tr>
+              <tr><th>어깨 및 상지</th><td>회전근개 증후군, 동결견(유착성 관절낭염), 이두근 힘줄염, 상부 관절와순 전후 병변</td></tr>
+              <tr><th>주관절, 손, 손목</th><td>외/내측 상과염, 손목터널 증후군, 방아쇠 손가락증, 드퀘르뱅 병</td></tr>
+              <tr><th>다리</th><td>무릎 관절염, 전/후십자인대 손상, 내/외측곁인대 손상, 반달연골 손상, 무릎 윤활낭염, 슬개대퇴부 통증 증후군, 발바닥 근막염</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap"><b>표 1-1</b>직업성 근골격계질환의 종류(예시)</p>
+      </div>
+
+      <div class="sec" id="c1-2" data-toc="조사의 법적 근거 및 필요성">
+        <h3><span class="no">1.2</span>조사의 법적 근거 및 필요성</h3>
+        <p>근골격계질환은 근로자의 건강 보호를 위해 체계적인 예방과 관리가 필요한 핵심 질환 중 하나이다. 이에 정부는 2004년부터 산업안전보건법에 따라 유해요인조사 제도를 시행하고 있으며, 현재 사업주는 산업안전보건기준에 관한 규칙 제657조에 의거하여 근골격계부담작업이 있는 사업장에 대해 <mark>매 3년마다 정기적으로 유해요인조사를 실시할 의무</mark>가 있다. 본 조사는 다음의 법령 및 고시를 준수하여 수행되었다.</p>
+
+        <h4 class="sub"><span class="k">가</span>산업안전보건법</h4>
+        <p>「산업안전보건법」(이하 “법”) 제39조제1항제5호에 따라 사업주에게 보건상의 조치로 단순반복작업 또는 인체에 과도한 부담을 주는 작업에 의한 건강장해 예방의 의무를 부과(2003년 7월 시행)하였다. 그 목적은 근골격계부담작업이 있는 부서의 유해요인을 제거하거나 감소시키는 데 있다.</p>
+        <div class="callout warn"><b>따라서 유해요인조사의 결과를 근골격계질환의 이환을 부정 또는 긍정하는 근거로 사용할 수 없다.</b></div>
+        <div class="law"><div class="law-h">법 제39조(보건조치)<small>개정 2024. 10. 22.</small></div><div class="law-b">① 사업주는 다음 각 호의 어느 하나에 해당하는 건강장해를 예방하기 위하여 필요한 조치를 하여야 한다.<span class="ind">5. 단순반복작업 또는 인체에 과도한 부담을 주는 작업에 의한 건강장해</span><span class="ind">② 제1항에 따라 사업주가 하여야 하는 보건조치에 관한 구체적인 사항은 고용노동부령으로 정한다.</span></div></div>
+        <div class="law"><div class="law-h">법 제40조(근로자의 안전조치 및 보건조치 준수)</div><div class="law-b">근로자는 제38조 및 제39조에 따라 사업주가 한 조치로서 고용노동부령으로 정하는 조치 사항을 지켜야 한다.</div></div>
+
+        <h4 class="sub"><span class="k">나</span>산업안전보건기준에 관한 규칙</h4>
+        <p>법 제39조제1항제5호의 규정에 따라 사업주에게 근골격계부담작업으로 인한 건강장해를 예방하도록 의무가 신설되었다. 구체적인 사항은 「산업안전보건기준에 관한 규칙」(이하 “안전보건규칙”) 제656조부터 제662조에 규정하며, 유해요인조사 및 그 결과에 따른 작업환경의 개선, 유해성의 주지, 의학적 관리, 예방관리 프로그램 작성 및 시행, 중량물 작업 특별조치 등 사업주의 구체적인 보건상의 조치사항을 정한다.</p>
+        <div class="law"><div class="law-h">안전보건규칙 제656조(정의)<small>개정 2019. 12. 26.</small></div><div class="law-b"><ol>
+          <li>“근골격계부담작업”이란 법 제39조제1항제5호에 따른 작업으로서 작업량ㆍ작업속도ㆍ작업강도 및 작업장 구조 등에 따라 고용노동부장관이 정하여 고시하는 작업을 말한다.</li>
+          <li>“근골격계질환”이란 반복적인 동작, 부적절한 작업자세, 무리한 힘의 사용, 날카로운 면과의 신체접촉, 진동 및 온도 등의 요인에 의하여 발생하는 건강장해로서 목, 어깨, 허리, 팔ㆍ다리의 신경ㆍ근육 및 그 주변 신체조직 등에 나타나는 질환을 말한다.</li>
+          <li>“근골격계질환 예방관리 프로그램”이란 유해요인 조사, 작업환경 개선, 의학적 관리, 교육ㆍ훈련, 평가에 관한 사항 등이 포함된 근골격계질환을 예방관리하기 위한 종합적인 계획을 말한다.</li></ol></div></div>
+        <div class="law"><div class="law-h">안전보건규칙 제657조(유해요인조사)</div><div class="law-b">
+          ① 사업주는 근로자가 근골격계부담작업을 하는 경우에 3년마다 다음 각 호의 사항에 대한 유해요인조사를 하여야 한다. 다만, 신설되는 사업장의 경우에는 신설일부터 1년 이내에 최초의 유해요인 조사를 하여야 한다.
+          <ol><li>설비ㆍ작업공정ㆍ작업량ㆍ작업속도 등 작업장 상황</li><li>작업시간ㆍ작업자세ㆍ작업방법 등 작업조건</li><li>작업과 관련된 근골격계질환 징후와 증상 유무 등</li></ol>
+          <span class="ind">② 사업주는 다음 각 호의 어느 하나에 해당하는 사유가 발생하였을 경우에 제1항에도 불구하고 1개월 이내에 조사대상 및 조사방법 등을 검토하여 유해요인 조사를 해야 한다. 다만, 제1호에 해당하는 경우로서 해당 근골격계질환에 대하여 최근 1년 이내에 유해요인 조사를 하고 그 결과를 반영하여 제659조에 따른 작업환경 개선에 필요한 조치를 한 경우는 제외한다.</span>
+          <ol><li>법에 따른 임시건강진단 등에서 근골격계질환자가 발생하였거나 근로자가 근골격계질환으로 「산업재해보상보험법 시행령」 별표 3 제2호가목ㆍ마목 및 제12호라목에 따라 업무상 질병으로 인정받은 경우(근골격계부담작업이 아닌 작업에서 근골격계질환자가 발생하였거나 근골격계부담작업이 아닌 작업에서 발생한 근골격계질환에 대해 업무상 질병으로 인정받은 경우를 포함한다)</li><li>근골격계부담작업에 해당하는 새로운 작업ㆍ설비를 도입한 경우</li><li>근골격계부담작업에 해당하는 업무의 양과 작업공정 등 작업환경을 변경한 경우</li></ol>
+          <span class="ind">③ 사업주는 유해요인 조사에 근로자 대표 또는 해당 작업 근로자를 참여시켜야 한다.</span></div></div>
+
+        <h4 class="sub"><span class="k">다</span>고용노동부 고시</h4>
+        <p>「근골격계부담작업 유해요인조사 방법에 관한 고시」(고용노동부고시 제2020-12호)를 기준으로 컴퓨터 작업, 반복작업 등 11개 근골격계부담작업의 범위 및 유해요인조사 방법을 규정한다.</p>
+        <div class="law"><div class="law-h">고시 제2조(정의)<small>고용노동부고시 제2020-12호, 2020. 1. 6. 일부개정</small></div><div class="law-b"><ol>
+          <li>“단기간 작업”이란 2개월 이내에 종료되는 1회성 작업을 말한다.</li>
+          <li>“간헐적인 작업”이란 연간 총 작업일수가 60일을 초과하지 않는 작업을 말한다.</li>
+          <li>“하루”란 「근로기준법」 제2조제1항제7호에 따른 1일 소정근로시간과 1일 연장근로시간 동안 근로자가 수행하는 총 작업시간을 말한다.</li>
+          <li>“4시간 이상” 또는 “2시간 이상”은 제3호에 따른 “하루” 중 근로자가 제3조 각 호에 해당하는 근골격계부담작업을 실제로 수행한 시간을 합산한 시간을 말한다.</li></ol></div></div>
+        <div class="law"><div class="law-h">고시 제3조(근골격계부담작업)</div><div class="law-b">법 제39조제1항제5호 및 안전보건규칙 제656조제1호에 따른 근골격계부담작업이란 다음 각 호(제1호~제11호)의 어느 하나에 해당하는 작업을 말한다. <b>다만, 단기간작업 또는 간헐적인 작업은 제외한다.</b> <a href="#c2" style="color:var(--forest);font-weight:600;text-decoration:none">→ 11개 항목 보기</a></div></div>
+
+        <h4 class="sub"><span class="k">라</span>적용 및 벌칙</h4>
+        <div class="two">
+          <div class="box"><h5><span class="chip n">적용대상</span></h5><p>법 제39조에 의한 사업주의 근골격계질환 예방의무는 <b>1인 이상의 근로자를 사용하는 모든 사업 또는 사업장</b>(국가·지방자치단체 및 정부투자기관 포함)에 적용한다.</p></div>
+          <div class="box"><h5><span class="chip r">위반 시 벌칙</span></h5><p>예방의무를 준수하지 않은 사업주는 법 제168조에 의하여 <b>“5년 이하의 징역 또는 5천만원 이하의 벌금”</b>에 처한다.</p></div>
+        </div>
+      </div>
+
+      <div class="sec" id="c1-3" data-toc="조사의 목적">
+        <h3><span class="no">1.3</span>조사의 목적</h3>
+        <p class="lead">본 조사의 궁극적인 목적은 작업 현장 내에 존재하는 근골격계 유해요인을 사전에 파악하여 이를 제거하거나 감소시킴으로써 근로자의 질환 발생을 예방하는 데 있다.</p>
+        <p>객관적인 조사를 통해 확인된 유해요인을 분석하고 실효성 있는 개선 대책을 제시함으로써, 사업장 자율의 근골격계질환 예방·관리 프로그램을 수립하고 실행할 수 있는 전문적인 기초 자료를 제공하고자 한다.</p>
+      </div>
+    </section>
+
+    <!-- ===================== CHAPTER 2 ===================== -->
+    <section class="chapter" id="c2" data-toc="근골격계부담작업의 범위">
+      <div class="ch-head"><span class="ch-num">02</span><div><span class="en">SCOPE OF BURDEN WORK</span><h2>근골격계부담작업의 범위</h2></div></div>
+      <p style="margin-top:22px">고시 제3조는 다음 11가지 작업을 근골격계부담작업으로 정한다. 각 항목은 <b>작업시간·반복횟수·중량</b> 조건을 함께 충족해야 해당되며, 단기간작업(2개월 이내 종료되는 1회성 작업)과 간헐적인 작업(연간 총 작업일수 60일 이하)은 제외한다.</p>
+      <div class="callout">작업 사진에서 특정 자세가 보인다는 것만으로 부담작업 해당 여부를 판단하지 않는다. 실제 작업시간, 빈도, 중량을 근로자 면담과 작업 관찰로 확인한 뒤 판정한다.</div>
+      <div class="bw-index" id="bwIndex"><span class="fl">바로가기</span></div>
+      <div id="bwList"></div>
+
+      <div class="sec" id="c2-ref" data-toc="(참고) 급식·미화 종사자의 부담작업">
+        <h3>(참고) 학교 급식, 미화 종사자에게 발생 가능한 근골격계부담작업</h3>
+        <div class="fig-row">
+          <div><div class="frame" data-cap="2호 반복동작 (학교 급식, 미화 종사자 예시)"><img src="img/ref02.jpg" alt="급식 종사자가 반복적으로 배식 용기를 다루는 모습" loading="lazy"></div><p class="lbl">2호 반복동작</p></div>
+          <div><div class="frame" data-cap="4호 목/허리 굽힘 (학교 급식, 미화 종사자 예시)"><img src="img/ref04.jpg" alt="허리를 굽혀 대걸레질하는 미화 종사자" loading="lazy"></div><p class="lbl">4호 목/허리 굽힘</p></div>
+          <div><div class="frame" data-cap="5호 쪼그려 앉기 (학교 급식, 미화 종사자 예시)"><img src="img/ref05.jpg" alt="쪼그려 앉아 바닥을 닦는 미화 종사자" loading="lazy"></div><p class="lbl">5호 쪼그려 앉기</p></div>
+        </div>
+      </div>
+
+      <div class="sec" id="c2-heavy" data-toc="(참고) 중량물 취급 관련 규정">
+        <h3>(참고) 중량물 취급과 관련된 규정</h3>
+        <div class="law"><div class="law-h">안전보건규칙 제663조(중량물의 제한)</div><div class="law-b">사업주는 근로자가 중량물을 인력으로 들어올리는 작업을 하는 경우에 과도한 무게로 인하여 근로자의 목·허리 등 근골격계에 무리한 부담을 주지 않도록 최대한 노력해야 한다.</div></div>
+        <div class="law"><div class="law-h">안전보건규칙 제664조(작업 시간과 휴식시간 등의 배분)</div><div class="law-b">사업주는 근로자가 중량물을 인력으로 들어올리거나 운반하는 작업을 하는 경우에 근로자가 취급하는 물품의 중량·취급빈도·운반거리·운반속도 등 인체에 부담을 주는 작업의 조건에 따라 작업시간과 휴식시간 등을 적정하게 배분해야 한다.</div></div>
+        <div class="law"><div class="law-h">안전보건규칙 제665조(중량의 표시 등)</div><div class="law-b">사업주는 근로자가 5킬로그램 이상의 중량물을 인력으로 들어올리는 작업을 하는 경우에 다음 각 호의 조치를 해야 한다.<ol><li>주로 취급하는 물품에 대하여 근로자가 쉽게 알 수 있도록 물품의 중량과 무게중심에 대하여 작업장 주변에 안내표시를 할 것</li><li>취급하기 곤란한 물품은 손잡이를 붙이거나 갈고리, 진공빨판 등 적절한 보조도구를 활용할 것</li></ol></div></div>
+        <div class="law"><div class="law-h">안전보건규칙 제666조(작업자세 등)</div><div class="law-b">사업주는 근로자가 중량물을 인력으로 들어올리는 작업을 하는 경우에 무게중심을 낮추거나 대상물에 몸을 밀착하도록 하는 등 근로자에게 신체의 부담을 줄일 수 있는 자세에 대하여 알려야 한다.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== CHAPTER 3 ===================== -->
+    <section class="chapter" id="c3" data-toc="근골격계 유해요인조사">
+      <div class="ch-head"><span class="ch-num">03</span><div><span class="en">HAZARD ASSESSMENT</span><h2>근골격계 유해요인조사</h2></div></div>
+
+      <div class="sec" id="c3-1" data-toc="유해요인조사의 시기">
+        <h3><span class="no">3.1</span>유해요인조사의 시기</h3>
+        <div class="two">
+          <div class="box"><h5><span class="chip n">정기조사</span></h5><p>사업주는 유해요인조사가 완료된 날로부터 <b>매 3년마다</b> 정기적으로 유해요인조사를 실시한다.</p></div>
+          <div class="box"><h5><span class="chip a">수시조사</span></h5><p>다음 각 호에서 정하는 경우에는 <b>수시로</b> 유해요인조사를 실시한다.</p></div>
+        </div>
+        <div class="tbl"><table class="hover">
+          <thead><tr><th class="c" style="width:56px">구분</th><th>수시조사 사유</th></tr></thead>
+          <tbody>
+            <tr><td class="c">1</td><td>법에 따른 임시건강진단 등에서 근골격계질환자가 발생하였거나 근로자가 근골격계질환으로 업무상 질병으로 인정받은 경우<br><span style="font-size:13px;color:var(--muted)">(산업재해보상보험법 시행령 별표 3 제2호 가목·마목 및 제12호 라목에 의거)</span></td></tr>
+            <tr><td class="c">2</td><td>근골격계부담작업에 해당하는 새로운 작업·설비를 도입한 경우</td></tr>
+            <tr><td class="c">3</td><td>근골격계부담작업에 해당하는 업무의 양과 작업공정 등 작업환경을 변경한 경우</td></tr>
+          </tbody></table></div>
+        <p class="cap"><b>표 3-1</b>수시 유해요인조사 실시 사유</p>
+      </div>
+
+      <div class="sec" id="c3-2" data-toc="유해요인조사 방법">
+        <h3><span class="no">3.2</span>유해요인조사 방법</h3>
+        <p>유해요인조사는 근로자와의 면담, 증상설문조사, 인간공학적 측면을 고려한 조사를 포함하여 아래 흐름도와 같이 <b>유해요인 기본조사</b>, <b>근골격계질환 증상조사</b>로 이루어지며, 조사결과에 따라 <b>개선우선순위 결정, 개선대책 수립과 시행</b> 등의 유해요인 관리와 <b>개선효과 평가</b>의 순서로 진행한다.</p>
+        <div class="flow-wrap" style="margin-top:22px">
+          <div class="flowv" style="margin-top:0">
+            <div class="node">정기조사 (3년마다)</div>
+            <div class="arrow">↓</div>
+            <div class="node q">근골격계질환자 발생 · 근골격계부담작업 해당 여부</div>
+            <div class="arrow">↓ YES&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--muted)">NO → 유해요인 조사 이행의무 없음</span></div>
+            <div class="node dark">유해요인 조사</div>
+            <div class="arrow">↓</div>
+            <div class="node dark">개선 우선순위 결정</div>
+            <div class="arrow">↓</div>
+            <div class="node dark">개선 대책 수립 및 실시</div>
+            <div class="arrow">↓</div>
+            <div class="node">개선효과 평가 → 다음 정기조사로 순환</div>
+          </div>
+          <div style="display:grid;gap:10px">
+            <div class="side-note"><b>수시조사 (발생 시)</b>근골격계질환자 발생 시<br>새로운 작업·설비 도입 시<br>작업환경 변경 시<br><span style="color:var(--muted)">→ 판단 단계로 합류</span></div>
+          </div>
+        </div>
+        <p class="cap"><b>그림 3-1</b>유해요인조사 흐름도</p>
+
+        <p style="margin-top:28px">유해요인 기본조사와 근골격계질환 증상조사는 산업안전보건법에서 정하는 <b>유해요인기본조사표</b>와 <b>근골격계질환 증상조사표</b>를 사용한다.</p>
+        <div class="fig-2">
+          <figure style="margin:16px 0 0"><div class="frame" data-cap="유해요인 조사표 (유해요인 기본조사)"><img src="img/form-basic.jpg" alt="유해요인 조사표 양식: 조사 개요, 작업장 상황 조사, 작업조건 조사, 유해요인 평가" loading="lazy"></div><figcaption><b>그림 3-2</b>유해요인 조사표</figcaption></figure>
+          <figure style="margin:16px 0 0"><div class="frame" data-cap="근골격계질환 증상조사표"><img src="img/form-symptom.jpg" alt="근골격계질환 증상조사표 양식: 일반 사항과 신체부위별 통증 문항" loading="lazy"></div><figcaption><b>그림 3-3</b>근골격계질환 증상조사표</figcaption></figure>
+        </div>
+        <div class="callout" style="margin-top:24px"><b>전수조사 원칙</b> — 사업주는 사업장 내 근골격계부담작업에 대하여 전수조사를 원칙으로 한다. 다만, 동일한 작업형태와 동일한 작업조건의 근골격계부담작업이 존재하는 경우에는 일부 작업에 대해서만 단계적 유해요인조사를 수행할 수 있다.</div>
+      </div>
+
+      <div class="sec" id="c3-3" data-toc="유해요인조사 내용">
+        <h3><span class="no">3.3</span>유해요인조사 내용</h3>
+        <p>근골격계질환의 발생 요인은 <b>작업장 요인, 작업자 요인, 작업 요인</b>(작업자세, 반복성, 무리한 힘 등), <b>환경 요인</b> 등 크게 4가지로 구분한다. 이에 따라 유해요인 조사 또한 이를 파악하는 데 중점을 둔다.</p>
+        <figure class="wide"><div class="frame" data-cap="근골격계질환 발생요인 4가지"><img src="img/factors.jpg" alt="근골격계질환 발생요인 4가지: 작업장 요인, 작업자 요인, 작업 요인, 환경 요인" loading="lazy"></div><figcaption><b>그림 3-4</b>근골격계질환 발생요인 4가지</figcaption></figure>
+        <div class="tbl"><table class="hover">
+          <thead><tr><th>구분</th><th>주요 내용</th></tr></thead>
+          <tbody>
+            <tr><th>1. 작업장 요인</th><td>부적절한 작업공구, 작업장 설계 / 책상, 키보드, 모니터 등</td></tr>
+            <tr><th>2. 작업자 요인</th><td>나이, 신체조건, 경력, 작업습관 / 과거병력, 가사노동 등</td></tr>
+            <tr><th>3. 작업 요인</th><td>작업자세, 반복성 / 무리한 힘 등</td></tr>
+            <tr><th>4. 환경 요인</th><td>진동, 조명 / 온도, 스트레스 등</td></tr>
+          </tbody></table></div>
+
+        <h4 class="sub"><span class="k">1</span>유해요인 기본조사</h4>
+        <p>유해요인 기본조사의 내용은 작업장 상황 및 작업조건 조사로 구성된다.</p>
+        <div class="two">
+          <div class="box"><h5><span class="chip n">작업장 상황조사</span></h5><ol class="num" style="margin-top:4px"><li>작업공정</li><li>작업설비</li><li>작업량</li><li>작업속도 및 최근 업무의 변화 등</li></ol></div>
+          <div class="box"><h5><span class="chip">작업조건조사</span></h5><ol class="num" style="margin-top:4px"><li>반복성</li><li>부자연스러운 또는 취하기 어려운 자세</li><li>과도한 힘</li><li>접촉 스트레스</li><li>진동 등</li></ol></div>
+        </div>
+
+        <h4 class="sub"><span class="k">2</span>근골격계질환 증상조사</h4>
+        <p>근골격계질환 증상조사 항목은 다음 내용을 포함한다.</p>
+        <div class="pills"><span>증상과 징후</span><span>직업력(근무력)</span><span>근무형태(교대제 여부 등)</span><span>취미생활</span><span>과거 질병력 등</span></div>
+        <p style="margin-top:16px">유해요인 기본조사표, 근골격계질환 증상조사표 등을 활용하여 근골격계질환의 징후 및 증상과 과거병력, 증상 호소자 등을 파악한다.</p>
+        <div class="tbl"><table>
+          <thead><tr><th style="width:120px">구분</th><th>지속기간</th><th>빈도</th><th>통증 강도</th></tr></thead>
+          <tbody>
+            <tr><th style="color:var(--amber)">관리대상자</th><td>적어도 1주일 이상 지속되거나 <b>(OR)</b></td><td>1개월에 1회 이상</td><td>‘중간 정도’</td></tr>
+            <tr><th style="color:var(--red)">통증호소자</th><td>적어도 1주일 이상 지속되고 <b>(AND)</b></td><td>1개월에 1회 이상</td><td>‘심한 통증’ 또는 ‘매우 심한 통증’</td></tr>
+          </tbody></table></div>
+        <p class="cap"><b>표 3-2</b>관리대상자와 통증호소자 기준</p>
+
+        <h4 class="sub"><span class="k">3</span>부담작업 평가 방법</h4>
+        <p>부담작업을 평가하는 방법은 ‘설문조사’와 워크 샘플링에 근거한 ‘작업측정’ 방법을 이용한다.</p>
+        <div class="two">
+          <div class="box"><h5>설문조사</h5><p>근로자와 관리자에게 설문을 실시하여 부담작업을 선정하는 방식으로, 중/소규모 사업장과 같이 인프라가 부족하거나 시간 및 비용 제한이 있는 경우 효과적으로 사용할 수 있다. 주관적인 평가라는 단점이 있을 수 있지만, 작업자의 의견을 반영할 수 있다는 장점도 있다.</p></div>
+          <div class="box"><h5>작업측정</h5><p>워크 샘플링에 근거하여 작업을 측정하는 방법으로, 부담작업 평가에 관한 <b>노사 간 이견이 있는 경우</b> 사용한다.</p></div>
+        </div>
+      </div>
+
+      <div class="sec" id="c3-4" data-toc="인간공학적 평가방법">
+        <h3><span class="no">3.4</span>인간공학적 평가방법</h3>
+        <p>인간공학은 인간과 도구, 기계, 시스템, 그리고 환경 간의 상호작용을 연구하는 학문이다. 이 분야는 인간의 육체적, 심리적, 사회적 특성과 한계를 파악하여 시스템의 수용도를 높임으로써 작업 효율을 향상시키고 인간의 가치를 제고하는 것을 목적으로 한다. 근로자를 둘러싼 작업 조건이나 환경이 인간의 신체적 특성에 적합하지 않을 경우 근골격계질환과 같은 부정적인 결과가 초래될 수 있으며, 이러한 유해 환경을 과학적으로 평가하는 과정을 <b>인간공학적 평가</b>라 정의한다.</p>
+        <p>본 조사에서는 객관적이고 정밀한 분석을 위해 한국산업안전보건공단에서 제시하는 유해요인조사표와 자체적인 평가 프로그램을 병행하여 활용하였다. 유해요인조사표를 통해 작업 설비, 작업량, 작업 속도, 업무 변화 등의 작업장 상황과 작업 부하 및 빈도 등의 작업 조건을 근로자 면담을 통해 상세히 조사하며, 이를 바탕으로 작업별 유해요인의 근본적인 원인을 분석하였다.</p>
+        <div class="tbl"><table class="hover">
+          <thead><tr><th>평가 도구</th><th>명칭</th></tr></thead>
+          <tbody>
+            <tr><th>RULA</th><td>Rapid Upper Limb Assessment</td></tr>
+            <tr><th>REBA</th><td>Rapid Entire Body Assessment</td></tr>
+            <tr><th>OWAS</th><td>Ovako Working Posture Analysis System</td></tr>
+          </tbody></table></div>
+        <p class="cap"><b>표 3-3</b>본 조사에 적용한 인간공학적 평가 도구</p>
+        <p style="margin-top:20px">평가 시에는 해당 도구의 사용 목적, 적용 신체 부위, 반복성 및 과도한 힘의 사용 여부 등 작업의 특성을 종합적으로 고려하여 가장 적합한 모델과 객관적인 산출 값을 선택하였다. 이러한 다각적인 평가 과정을 통해 도출된 데이터는 유해요인 노출 특성의 변화를 파악하고 실효성 있는 작업환경 개선안을 마련하는 데 핵심적인 기초 자료로 활용될 수 있다.</p>
+
+        <h4 class="sub" id="reba"><span class="k">※</span>REBA에 의한 작업평가 알아보기</h4>
+        <p>REBA(Rapid Entire Body Assessment)는 1998년 Sue Hignett와 Lynn McAtamney에 의해 개발된 인간공학적 평가 도구로, 근골격계 질환(직업성 상지 질환)과 관련한 위해 인자의 개인 작업자 노출 정도를 평가하기 위해 설계되었다. 이 도구는 특히 서비스업에서 다양한 자세로 이루어지는 작업의 전반적인 신체 부담 정도를 분석하는 데 초점을 두고 있다.</p>
+        <p>REBA는 크게 두 개의 그룹으로 나누어 신체 부위별 작업자의 세부 정보를 나타내는 그림과 4개의 배점표로 구성된다. 주요 작업 요소에는 반복성, 정적 작업, 힘, 작업 자세, 연속 작업 시간이 포함된다.</p>
+        <div class="two">
+          <div class="box"><h5><span class="chip n">그룹 A</span>몸통 · 목 · 다리</h5><p>허리, 목, 다리 각각의 부하 수준을 통합적으로 평가하고, 무게·힘에 대한 평가를 더해 <b>점수 A</b>로 변환</p></div>
+          <div class="box"><h5><span class="chip">그룹 B</span>윗팔 · 아래팔 · 손목</h5><p>윗팔, 아래팔, 손목 각각의 부하 수준을 통합적으로 평가하고, 손잡이 평가를 포함하여 <b>점수 B</b>로 변환</p></div>
+        </div>
+        <ul class="dot" style="margin-top:18px">
+          <li>주어진 작업자 자세를 선택하기 위해 작업을 여러 번 관찰</li>
+          <li>가장 빈번하게 수행되는 자세 또는 가장 큰 작업 부하가 걸리는 자세를 선택하여 평가</li>
+          <li>평가 시 오른쪽 또는 왼쪽 중 한쪽만 평가한 후, 다른 쪽을 평가</li>
+          <li>디지털 카메라나 캠코더를 사용하여 작업을 촬영(최소 3사이클)</li>
+        </ul>
+        <div class="reba-steps">
+          <div><b>① 점수 A</b><span>몸통·목·다리 (표 1~3) → 표 4 + 무게/힘 (표 5)</span></div>
+          <div><b>② 점수 B</b><span>윗팔·아래팔·손목 (표 6~8) → 표 9 + 손잡이 (표 10)</span></div>
+          <div><b>③ 점수 C</b><span>점수 A와 점수 B를 Table C로 대조해 총괄 작업 부하 산출</span></div>
+          <div><b>④ REBA 점수</b><span>점수 C + 행동점수 (표 11) → 조치수준 결정</span></div>
+        </div>
+        <p style="margin-top:14px;font-size:14.5px">점수는 1점에서 15점 사이로 나타나며, 직무의 위험 수준을 평가하기 위해 5개의 조치 단계(Action level)로 분류된다.</p>
+
+        <div class="reba-block">
+          <h5>REBA 표 1 · 몸통 자세에 대한 분류체계</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th>자세설명</th></tr></thead><tbody>
+            <tr><td class="score">1</td><td>곧바로 선 자세</td></tr><tr><td class="score">2</td><td>0~20도 구부리거나 0~20도 뒤로 젖힘</td></tr><tr><td class="score">3</td><td>20~60도 구부리거나 20~60도 뒤로 젖힘</td></tr><tr><td class="score">4</td><td>60도 이상 구부림</td></tr><tr><td class="score">+1</td><td>몸통이 비틀리거나 옆으로 구부러질 때</td></tr></tbody></table></div>
+          <figure><div class="frame" data-cap="REBA 표 1 · 몸통 자세"><img src="img/reba-trunk.jpg" alt="몸통 자세별 REBA 점수 그림" loading="lazy"></div></figure>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 2 · 목 자세에 대한 분류체계</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th>자세설명</th></tr></thead><tbody>
+            <tr><td class="score">1</td><td>0~20도 구부림</td></tr><tr><td class="score">2</td><td>20도 이상 구부림</td></tr><tr><td class="score">2</td><td>뒤로 젖힘</td></tr><tr><td class="score">+1</td><td>목이 비틀리거나 옆으로 숙일 때</td></tr></tbody></table></div>
+          <figure><div class="frame" data-cap="REBA 표 2 · 목 자세"><img src="img/reba-neck.jpg" alt="목 자세별 REBA 점수 그림" loading="lazy"></div></figure>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 3 · 다리 자세에 대한 분류체계</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th>자세설명</th></tr></thead><tbody>
+            <tr><td class="score">1</td><td>두 다리가 모두 나란하거나 걷거나 앉아 있을 시</td></tr><tr><td class="score">2</td><td>발바닥이 한발만 땅에 지지되어질 시</td></tr><tr><td class="score">+1</td><td>무릎이 30~60도 사이로 구부러질 시</td></tr><tr><td class="score">+2</td><td>무릎이 60도 이상 구부러질 시(앉은 자세 제외)</td></tr></tbody></table></div>
+          <figure><div class="frame" data-cap="REBA 표 3 · 다리 자세"><img src="img/reba-legs.jpg" alt="다리 자세별 REBA 점수 그림" loading="lazy"></div></figure>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 4 · 그룹 A의 종합 부하수치</h5>
+          <p style="font-size:13.5px;color:var(--muted)">행은 몸통 점수, 열은 목 점수(1~3)별 다리 점수(1~4)입니다. 셀에 마우스를 올리면 해당 행·열이 강조됩니다.</p>
+          <div class="tbl"><table class="matrix" id="mxA"></table></div>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 5 · 무게/힘에 대한 분류</h5>
+          <div class="tbl"><table><thead><tr><th class="c">&lt;5kg</th><th class="c">5–10kg</th><th class="c">&gt;10kg</th><th class="c">충격 또는 갑작스런 힘의 사용</th></tr></thead><tbody><tr><td class="score" style="width:auto">0</td><td class="score" style="width:auto">1</td><td class="score" style="width:auto">2</td><td class="score" style="width:auto">+1</td></tr></tbody></table></div>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 6 · 윗팔 자세에 대한 분류체계</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th>자세설명</th></tr></thead><tbody>
+            <tr><td class="score">1</td><td>20도 뒤로 젖혀지거나 앞으로 20도 들림</td></tr><tr><td class="score">2</td><td>20도 이상 뒤로 젖혀지거나 앞으로 20~45도 들림</td></tr><tr><td class="score">3</td><td>앞으로 45~90도 들림</td></tr><tr><td class="score">4</td><td>앞으로 90도 이상 들림</td></tr><tr><td class="score">+1</td><td>윗팔이 벌어지거나 회전 시</td></tr><tr><td class="score">+1</td><td>어깨가 들려진다면</td></tr><tr><td class="score">−1</td><td>팔이 무엇인가에 지탱되거나 기대어질 시</td></tr></tbody></table></div>
+          <figure><div class="frame" data-cap="REBA 표 6 · 윗팔 자세"><img src="img/reba-upper.jpg" alt="윗팔 자세별 REBA 점수 그림" loading="lazy"></div></figure>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 7 · 아래팔 자세에 대한 분류체계</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th>자세설명</th></tr></thead><tbody>
+            <tr><td class="score">1</td><td>60~100도 사이의 들림</td></tr><tr><td class="score">2</td><td>100도 이상 들리거나 0~60도의 들림</td></tr></tbody></table></div>
+          <figure><div class="frame" data-cap="REBA 표 7 · 아래팔 자세" style="max-width:560px;margin:0 auto"><img src="img/reba-lower.jpg" alt="아래팔 자세별 REBA 점수 그림" loading="lazy"></div></figure>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 8 · 손목 자세에 대한 분류체계</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th>자세설명</th></tr></thead><tbody>
+            <tr><td class="score">1</td><td>0~15도 사이의 꺾임이나 들림</td></tr><tr><td class="score">2</td><td>15도 이상의 꺾임이나 들림</td></tr><tr><td class="score">+1</td><td>손목이 비틀어질 시</td></tr></tbody></table></div>
+          <figure><div class="frame" data-cap="REBA 표 8 · 손목 자세"><img src="img/reba-wrist.jpg" alt="손목 자세별 REBA 점수 그림" loading="lazy"></div></figure>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 9 · 그룹 B의 종합 부하수치</h5>
+          <p style="font-size:13.5px;color:var(--muted)">행은 윗팔 점수, 열은 아래팔 점수(1~2)별 손목 점수(1~3)입니다.</p>
+          <div class="tbl"><table class="matrix" id="mxB"></table></div>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 10 · 손잡이에 대한 분류</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">지수</th><th style="width:96px">구분</th><th>설명</th></tr></thead><tbody>
+            <tr><td class="score">0</td><td><b>좋음</b></td><td>무게 중심에 위치한 튼튼하고 잘 고정된 적절한 손잡이가 있는 경우</td></tr>
+            <tr><td class="score">1</td><td><b>보통</b></td><td>어느 정도 적절한 손잡이가 있는 경우거나 대상물의 한 부위가 손잡이 대용으로 사용 가능한 경우</td></tr>
+            <tr><td class="score">2</td><td><b>나쁨</b></td><td>비록 들 수는 있으나 손으로 들기에 적절하지 않고 손잡이가 있으나 부적절한 경우</td></tr>
+            <tr><td class="score">3</td><td><b>채택불가</b></td><td>손잡이가 없거나 위험한 형태의 손잡이가 있는 경우</td></tr></tbody></table></div>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 표 11 · 행동점수 결정</h5>
+          <div class="tbl"><table class="hover"><thead><tr><th class="c">점수</th><th>조건</th></tr></thead><tbody>
+            <tr><td class="score">+1</td><td>한군데 이상 신체부위가 고정되어 있는 경우 (예: 1분 이상 잡고 있다)</td></tr>
+            <tr><td class="score">+1</td><td>좁은 범위에서 반복적인 작업을 하는 경우 (예: 분당 4회 이상 반복)</td></tr>
+            <tr><td class="score">+1</td><td>급하게 넓은 범위에서 변화되는 행동 또는 불안정한 하체의 자세</td></tr></tbody></table></div>
+        </div>
+        <div class="reba-block">
+          <h5>REBA 조치수준 · Table C 점수 + 행동점수</h5>
+          <div class="al">
+            <div><span class="lv">조치단계 0</span><div class="sc">1</div><div class="rk">무시해도 좋음</div><div class="ac">필요없음</div></div>
+            <div><span class="lv">조치단계 1</span><div class="sc">2–3</div><div class="rk">낮음</div><div class="ac">필요할지도 모름</div></div>
+            <div><span class="lv">조치단계 2</span><div class="sc">4–7</div><div class="rk">보통</div><div class="ac">필요함</div></div>
+            <div class="l3"><span class="lv">조치단계 3</span><div class="sc">8–10</div><div class="rk">높음</div><div class="ac">곧 필요함</div></div>
+            <div class="l4"><span class="lv">조치단계 4</span><div class="sc">11–15</div><div class="rk">매우 높음</div><div class="ac">지금 즉시 필요함</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec" id="c3-5" data-toc="유해요인의 개선과 사후조치">
+        <h3><span class="no">3.5</span>유해요인의 개선과 사후조치</h3>
+        <p>유해요인의 개선은 흐름도(그림 3-1)의 개선 우선순위에 따라 실시하되, 개선의 우선순위는 유해요인 기본조사 총점수가 높거나 근골격계질환 증상 호소율이 다른 작업보다 높은 경우로서 다음 각 호의 사항에 따른다.</p>
+        <div class="two">
+          <div class="box"><h5><span class="chip">가</span></h5><p>다수의 근로자가 유해요인에 노출되고 있거나 증상 및 불편을 호소하는 작업</p></div>
+          <div class="box"><h5><span class="chip">나</span></h5><p>비용편익효과가 큰 작업</p></div>
+        </div>
+        <ol class="num" style="margin-top:20px">
+          <li>사업주는 개선 우선순위에 따른 인간공학적으로 설계된 인력작업 보조설비 및 편의설비를 설치하는 등 적절한 개선계획을 수립하고, 해당근로자 또는 근로자 대표에게 알려야 하며, 적정한 작업환경개선 등 사후조치를 실시하여야 한다.</li>
+          <li>사업주는 개선계획의 수립 및 그 타당성을 검토하기 위하여 외부의 전문기관이나 전문가로부터 지도·조언을 들을 수 있다.</li>
+        </ol>
+      </div>
+
+      <div class="sec" id="c3-6" data-toc="문서의 기록과 보존">
+        <h3><span class="no">3.6</span>문서의 기록과 보존</h3>
+        <p>사업주는 다음과 같은 내용을 기록 보존하여야 한다.</p>
+        <div class="keep">
+          <div><span>(가) 유해요인 기본조사표</span><b>5년 보존</b></div>
+          <div><span>(나) 근골격계질환 증상조사표</span><b>5년 보존</b></div>
+          <div><span>(다) 개선계획 및 결과보고서</span><b class="sm">해당 시설·설비가 작업장 내에 존재하는 동안 보존</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CHAPTER 4 ===================== -->
+    <section class="chapter" id="c4" data-toc="예방관리 프로그램">
+      <div class="ch-head"><span class="ch-num">04</span><div><span class="en">PREVENTION PROGRAM</span><h2>근골격계질환 예방관리 프로그램</h2></div></div>
+
+      <div class="sec" id="c4-1" data-toc="예방관리 프로그램의 개요">
+        <h3><span class="no">4.1</span>예방관리 프로그램의 개요</h3>
+        <p class="lead">예방관리 프로그램이란 경영층이 참여하는 것을 전제로 작업장 및 작업조건 등에 대한 인간공학적 분석, 유해요인에 대한 작업환경 개선, 의학적 관리, 교육 및 훈련, 평가 등에 관한 사항이 포함된 <b>전사적이고 종합적인 계획</b>이다.</p>
+        <p>예방관리 프로그램을 통하여 효과를 얻기 위해서는 <mark>조기발견 – 조기치료 – 조기복귀</mark> 등에 초점을 맞춰 사업장 내에서 일상적이고 지속적으로 관리되어야 한다. 근골격계질환 예방을 위하여 종합적, 전사적으로 참여하여 유해요인 조사, 작업환경 개선, 통증호소자 관리 등의 추진을 희망하는 경우 자율적으로 시행할 수 있다.</p>
+        <div class="law collapsible"><div class="law-h" role="button" tabindex="0" aria-expanded="false">안전보건규칙 제662조(근골격계질환 예방관리 프로그램 시행)</div><div class="law-b">
+          ① 사업주는 다음 각 호의 어느 하나에 해당하는 경우에 근골격계질환 예방관리 프로그램을 수립하여 시행하여야 한다.
+          <ol><li>근골격계질환으로 「산업재해보상보험법 시행령」 별표 3 제2호가목·마목 및 제12호라목에 따라 업무상 질병으로 인정받은 근로자가 <b>연간 10명 이상</b> 발생한 사업장 또는 <b>5명 이상</b> 발생한 사업장으로서 발생 비율이 그 사업장 근로자 수의 <b>10퍼센트 이상</b>인 경우</li><li>근골격계질환 예방과 관련하여 <b>노사 간 이견(異見)이 지속</b>되는 사업장으로서 고용노동부장관이 필요하다고 인정하여 근골격계질환 예방관리 프로그램을 수립하여 시행할 것을 명령한 경우</li></ol>
+          <span class="ind">② 사업주는 근골격계질환 예방관리 프로그램을 작성·시행할 경우에 노사협의를 거쳐야 한다.</span>
+          <span class="ind">③ 사업주는 근골격계질환 예방관리 프로그램을 작성·시행할 경우에 인간공학·산업의학·산업위생·산업간호 등 분야별 전문가로부터 필요한 지도·조언을 받을 수 있다.</span></div></div>
+        <div class="cycle" id="cycle">
+          <div class="cyc on"><span class="s">STAGE 1</span><h6>근골격계질환 문제 진단</h6><ul><li>유해요인 평가</li><li>의학적 진단</li><li>조직체계 분석관리</li></ul></div>
+          <div class="cyc"><span class="s">STAGE 2</span><h6>관리전략 수립</h6><ul><li>관리대상 선정</li><li>우선순위 결정</li><li>사업장 관리모델 제시</li></ul></div>
+          <div class="cyc"><span class="s">STAGE 3</span><h6>관리프로그램 실행</h6><ul><li>공학적 개선</li><li>의학적 관리</li><li>교육·훈련</li></ul></div>
+          <div class="cyc"><span class="s">STAGE 4</span><h6>관리프로그램 평가</h6><ul><li>증상조사</li><li>개선효과 평가</li></ul></div>
+        </div>
+        <p class="cycle-note">평가 결과는 다시 문제 진단으로 이어지는 순환체계로 운영된다.</p>
+        <p class="cap"><b>그림 4-1</b>근골격계질환 예방관리 프로그램 순환체계</p>
+        <ul class="dot" style="margin-top:24px">
+          <li>사업주와 근로자는 근골격계질환이 단편적인 작업환경 개선만으로는 예방하기 어렵고 전직원의 지속적인 참여와 예방 활동을 통하여 그 위험을 최소화할 수 있다는 것을 인식하고 이를 위한 추진체계를 구축한다.</li>
+          <li>사업주와 근로자는 근골격계질환 발생의 <b>직접원인</b>(부자연스러운 작업자세, 반복성, 과도한 힘의 사용 등), <b>기초요인</b>(체력, 숙련도 등) 및 <b>간접요인</b>(업무량, 업무시간, 업무스트레스 등)을 제거하거나 관리하여 건강장해를 예방하거나 최소화한다.</li>
+          <li>사업주와 근로자는 근골격계질환의 위험에 대한 초기관리가 늦어지게 되면 영구적인 장애를 초래할 가능성이 있을 뿐만 아니라 이에 대한 치료 등 관리 비용이 커짐을 인식한다.</li>
+          <li>사업주와 근로자는 근골격계질환의 조기발견과 조기치료 및 조속한 직장복귀를 위하여 가능한 한 사업장 내에서 재활프로그램 등의 의학적 관리를 받을 수 있도록 한다.</li>
+        </ul>
+      </div>
+
+      <div class="sec" id="c4-2" data-toc="작업환경개선 방법">
+        <h3><span class="no">4.2</span>작업환경개선 방법</h3>
+        <p>사업주는 작업관찰을 통해 유해요인을 확인하고, 그 원인을 분석하여 그 결과에 따라 공학적 개선(engineering control) 또는 관리적 개선(administrative control)을 실시한다.</p>
+        <div class="compare">
+          <div><span class="en">Engineering control</span><h5>공학적 개선</h5><p class="def">현장에서 직접적인 설비나 작업방법, 작업도구 등을 작업자가 편하고, 쉽고, 안전하게 사용할 수 있도록 유해·위험요인의 원인을 제거하거나 개선하기 위하여 다음 각 항목에 대한 재설계, 재배열, 수정, 교체(substitution) 등을 말한다.</p><ul><li>공구·장비, 작업장</li><li>포장, 부품, 제품</li></ul></div>
+          <div><span class="en">Administrative control</span><h5>관리적 개선</h5><p class="def">작업절차 또는 작업 노출을 수정·관리하는 것으로 다음을 말한다.</p><ul><li>작업의 다양성 제공</li><li>작업일정 및 작업 속도 조절</li><li>회복시간 제공</li><li>작업 습관 변화</li><li>작업공간, 공구 및 장비의 청소 및 유지보수</li><li>작업자 적정배치</li><li>직장체조 강화 등</li></ul></div>
+        </div>
+      </div>
+
+      <div class="sec" id="c4-3" data-toc="의학적 관리(증상호소자 관리)">
+        <h3><span class="no">4.3</span>의학적 관리 (증상호소자 관리)</h3>
+        <ul class="dot">
+          <li>근골격계질환 증상·징후 보고자에 대해 신속한 조치 및 필요시 의학적 진단과 치료</li>
+          <li>질환 증상과 징후호소자의 조기발견 체계 구축</li>
+        </ul>
+        <div class="two">
+          <div class="box"><h5><span class="chip">조기발견 체계</span></h5><ul class="dot" style="margin-top:0;font-size:14.5px">
+            <li>근골격계질환 증상·징후가 있는 자가 즉시 관리감독자에게 보고</li><li>보고를 꺼리게 하거나 불이익을 당할 우려가 있는 기존의 관행과 조치 제거</li><li>보고일로부터 7일 이내 적절한 조치할 수 있는 체계구축</li><li>필요한 경우 관계전문가 위촉</li><li>근로자와의 면담 및 조사 실시</li><li>질환의 증상과 징후 근로자 조기 발견</li></ul></div>
+          <div class="box"><h5><span class="chip n">증상호소자 관리의 위임</span></h5><ul class="dot" style="margin-top:0;font-size:14.5px">
+            <li>보건의료전문가에게 위임</li><li>위임 보건의료전문가에게 정보와 기회 제공</li><li>근로자의 업무와 그 업무에 존재하는 유해요인 설명</li><li>근로자의 능력에 적합한 업무와 업무제한</li><li>사내 근골격계질환의 증상호소자 관리방법</li><li>작업장 순회점검</li><li>기타 근골격계질환 관리에 필요한 사업장 내 정보</li></ul></div>
+        </div>
+        <div class="box" style="margin-top:12px"><h5><span class="chip a">업무제한과 보호조치</span></h5><ul class="dot" style="margin-top:0;font-size:14.5px">
+          <li>근골격계질환 증상호소자에 대한 조치가 완료될 때까지 그 작업을 제한하거나 근골격계에 부담이 적은 작업으로 전환</li>
+          <li>증상호소자는 사업주가 시행하는 근골격계부담작업 완화를 위한 작업제한, 작업전환 등을 정당한 사유없이 거부해서는 안됨</li></ul></div>
+
+        <h4 class="sub"><span class="k">흐름</span>초기증상자 관리</h4>
+        <div class="vflow">
+          <div class="vstep"><span class="b">1</span><div class="t"><b>근골격계질환 증상 호소</b><span>근로자의 통증 호소</span></div></div>
+          <div class="vstep"><span class="b">2</span><div class="t"><b>산업보건의 진단</b><span>진찰, 근력측정, 방사선 검사, 정밀진단 등</span><span class="branch">심각한 양성징후가 나타나면 → 산재요양치료</span></div></div>
+          <div class="vstep"><span class="b">3</span><div class="t"><b>치료방법 결정</b><span>미약한 증상일 경우 초기증상 치료, 산재요양 치료</span></div></div>
+          <div class="vstep"><span class="b">4</span><div class="t"><b>물리치료 · 재활 · 제한적 업무할당</b><span>다양한 물리치료, 전문적인 재활프로그램 적용 및 제한적 업무할당(연장근로, 특근 등)</span></div></div>
+          <div class="vstep"><span class="b">5</span><div class="t"><b>3일 후 재평가</b><span>산업보건의의 진단</span></div></div>
+          <div class="vstep"><span class="b">6</span><div class="t"><b>복직 또는 산재요양치료</b><span>증상이 완치되면 복직</span></div></div>
+        </div>
+        <p class="cap"><b>그림 4-2</b>초기증상자 관리 흐름도</p>
+      </div>
+
+      <div class="next"><button data-go="survey"><small>다음 탭</small><b>02 설문조사 통계 →</b></button></div>
+      <div class="end"><span>국립산림과학원 2026 근골격계부담작업 유해요인조사 · PART 01</span><span>그림 출처: 「근골격계부담작업 유해요인조사」 설명자료</span></div>
+    </section>
+  </article>
+</div>
+</section>
+
+<!-- =====================================================
+     TAB 02 / 03 — 다음 단계에서 구현할 탭 (자리만 확보)
+     ===================================================== -->
+<section class="panel" id="survey" role="tabpanel">
+  <div class="wait">
+    <div class="eyebrow">PART 02 · SURVEY STATISTICS</div>
+    <h1>설문조사 통계</h1>
+    <p>근골격계질환 증상조사표 응답을 바탕으로, 구분 기준을 골라 결과를 비교해 보는 탭입니다.</p>
+    <ul>
+      <li><span>01</span>공정별 · 부서별 · 업무유형별 선택 보기</li>
+      <li><span>02</span>응답자 일반 특성 (성별, 연령, 근무경력 등)</li>
+      <li><span>03</span>신체부위별 증상 호소 현황 · 관리대상자/통증호소자</li>
+      <li><span>04</span>육체적 부담 정도 · 정신적 스트레스</li>
+    </ul>
+    <div class="state">설문 원자료가 준비되면 이 탭을 구현합니다.</div>
+  </div>
+</section>
+<section class="panel" id="process" role="tabpanel">
+  <div class="wait">
+    <div class="eyebrow">PART 03 · HAZARD ASSESSMENT BY PROCESS</div>
+    <h1>공정별 유해요인조사</h1>
+    <p>본원·포천의 작업공정과 단위작업별 유해요인조사 결과를 확인하는 탭입니다.</p>
+    <ul>
+      <li><span>01</span>작업공정 · 단위작업별 작업내용과 현장사진</li>
+      <li><span>02</span>부담작업(1~11호) 해당 여부와 근거</li>
+      <li><span>03</span>작업강도 · 작업빈도 평가, 인간공학적 평가결과</li>
+      <li><span>04</span>공정별 개선대책</li>
+    </ul>
+    <div class="state">공정별 조사자료가 준비되면 이 탭을 구현합니다.</div>
+  </div>
+</section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="그림 확대"><button aria-label="닫기">×</button><img alt=""><p></p></div>
+<button class="totop" id="totop" aria-label="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+
+<script>
+/* =====================================================
+   DATA — 부담작업 11종 (고시 제2020-12호 제3조)
+   ===================================================== */
+const BURDEN = [
+  {no:1, title:'키보드 또는 마우스 조작', cat:['repeat','반복작업'],
+   crit:'하루에 4시간 이상 집중적으로 자료입력 등을 위해 키보드 또는 마우스를 조작하는 작업',
+   factor:'반복작업', body:'손, 손가락', time:'4시간 이상',
+   notes:[['집중적 자료입력','입력작업의 목표량이 과도하게 미리 정해져 있거나 노동자가 일정 수준 이상 임의로 작업시간이나 휴식시간을 조절할 수 없는 경우']]},
+  {no:2, title:'같은 동작 반복', cat:['repeat','반복작업'],
+   crit:'하루에 총 2시간 이상 목, 어깨, 팔꿈치, 손목 또는 손을 사용하여 같은 동작을 반복하는 작업',
+   factor:'상지 반복작업', body:'목, 어깨, 팔꿈치, 손목, 손', time:'2시간 이상',
+   notes:[['같은 동작','동작이 동일하거나 다소 차이가 있더라도 동일한 신체부위를 유사하게 사용하는 움직임'],['반복하는 작업 기준','어깨 2.5회/분, 팔꿈치 10회/분, 손목·손 10회/분 이상']]},
+  {no:3, title:'머리 위, 어깨 위 작업', cat:['posture','부적절한 자세'],
+   crit:'하루에 총 2시간 이상 머리 위에 손이 있거나, 팔꿈치가 어깨 위에 있거나, 팔꿈치를 몸통으로부터 들거나, 팔꿈치를 몸통 뒤쪽에 위치하도록 하는 상태에서 이루어지는 작업',
+   factor:'부적절한 자세', body:'어깨, 팔', time:'2시간 이상',
+   notes:[['팔꿈치를 몸통으로부터 드는 경우','수직 상태 기준으로 위팔이 중력에 반하여 몸통으로부터 전방~측방 45도 이상 벌어져 있는 상태']]},
+  {no:4, title:'목, 허리의 비정상적 자세', cat:['posture','부적절한 자세'],
+   crit:'지지되지 않은 상태이거나 임의로 자세를 바꿀 수 없는 조건에서, 하루에 총 2시간 이상 목이나 허리를 구부리거나 트는 상태에서 이루어지는 작업',
+   factor:'부적절한 자세', body:'목, 허리', time:'2시간 이상',
+   notes:[['지지되지 않은 상태','목이나 허리를 구부리거나 비튼 상태에서 발생하는 신체부담을 해소시켜 줄 수 있는 지지대가 없는 경우'],['임의로 자세를 바꿀 수 없는 조건','작업을 하기 위해서 어쩔 수 없이 그러한 자세를 취할 수밖에 없는 경우'],['목이나 허리 굽힘','수직 상태를 기준으로 목이나 허리를 전방/후방으로 20도 이상 벗어나는 경우'],['목이나 허리를 튼 상태','목은 어깨를 고정한 상태에서 5도 이상, 허리는 다리를 고정한 상태에서 20도 이상 비튼 상태']]},
+  {no:5, title:'쪼그리거나 무릎 굽힘', cat:['posture','부적절한 자세'],
+   crit:'하루에 총 2시간 이상 쪼그리고 앉거나 무릎을 굽힌 자세에서 이루어지는 작업',
+   factor:'부적절한 자세', body:'다리, 무릎', time:'2시간 이상',
+   notes:[['쪼그리고 앉는 자세','수직상태를 기준으로 무릎을 구부린 상태에서 발이 체중의 대부분을 지탱하고 있는 상태'],['무릎을 굽힌 자세','바닥면에 한쪽 또는 양쪽 무릎을 댄 상태에서 해당 무릎이 체중의 대부분을 지탱하고 있는 자세']]},
+  {no:6, title:'손가락 집기', cat:['force','과도한 힘'],
+   crit:'하루에 총 2시간 이상 지지되지 않은 상태에서 1kg 이상의 물건을 한손의 손가락으로 집어 옮기거나, 2kg 이상에 상응하는 힘을 가하여 한손의 손가락으로 물건을 쥐는 작업',
+   factor:'과도한 힘', body:'손가락', time:'2시간 이상',
+   notes:[['지지되지 않는 상태','순전히 혼자만의 힘으로 손가락을 집어 옮기거나 한손의 손가락으로 물건을 쥐는 것'],['1kg(2kg)에 상응하는 힘','A4 용지 약 125매(250매)를 손가락으로 집어 올리거나 (한 손의 손가락으로 쥐는데) 사용하는 정도의 힘']]},
+  {no:7, title:'4.5kg 이상 물건 한 손 들기', cat:['force','과도한 힘'],
+   crit:'하루에 총 2시간 이상 지지되지 않은 상태에서 4.5kg 이상의 물건을 한 손으로 들거나 동일한 힘으로 쥐는 작업',
+   factor:'과도한 힘', body:'손, 손가락', time:'2시간 이상',
+   notes:[['지지되지 않은 상태','순전히 혼자만의 힘으로 물건을 한 손으로 들거나 쥐는 것'],['4.5kg의 물체를 한 손으로 드는 것과 동일한 힘','소형 자동차용 점프선의 집게를 한 손으로 쥐어서 여는 정도의 힘']]},
+  {no:8, title:'중량물 들기 (25kg 이상)', cat:['force','과도한 힘'],
+   crit:'하루에 10회 이상 25kg 이상의 물체를 드는 작업',
+   factor:'과도한 힘', body:'허리', time:'10회 이상',
+   notes:[['','중량물을 중력에 반하여 드는 경우에만 적용되며, 중량물을 밀거나 당기는 작업은 해당되지 않음'],['','동일한 물체를 2인 이상이 드는 경우 근로자 수로 나눈 물체의 무게로 평가']]},
+  {no:9, title:'부적절한 들기', cat:['force','과도한 힘'],
+   crit:'하루에 25회 이상 10kg 이상의 물체를 무릎 아래에서 들거나, 어깨 위에서 들거나, 팔을 뻗은 상태에서 드는 작업',
+   factor:'과도한 힘', body:'허리', time:'25회 이상',
+   notes:[['무릎 아래에서 들거나 어깨 위에서 들거나','드는 물체의 잡는 손의 위치가 무릎 아래 또는 어깨 위에 있는 상태'],['팔을 뻗은 상태','중력에 반하여 팔을 들고 팔꿈치를 곧게 편 상태']]},
+  {no:10, title:'빈번한 들기', cat:['force','과도한 힘'],
+   crit:'하루에 총 2시간 이상, 분당 2회 이상 4.5kg 이상의 물체를 드는 작업',
+   factor:'과도한 힘', body:'허리', time:'2시간 이상, 분당 2회 이상',
+   notes:[['','중량물을 중력에 반하여 드는 경우에만 적용되며, 중량물을 밀거나 당기는 작업은 해당되지 않음'],['','동일한 물체를 2인 이상이 드는 경우 근로자 수로 나눈 물체의 무게로 평가']]},
+  {no:11, title:'반복적 충격', cat:['contact','접촉 스트레스'],
+   crit:'하루에 총 2시간 이상 시간당 10회 이상 손 또는 무릎을 사용하여 반복적으로 충격을 가하는 작업',
+   factor:'접촉 스트레스, 과도한 힘', body:'손, 무릎', time:'2시간 이상, 시간당 10회 이상',
+   notes:[['충격을 가하는 작업','강하고 빠른 충격을 특정 물체에 전달하기 위하여 손 또는 무릎을 마치 망치처럼 사용하는 작업'],['예시','홈에 단단하게 끼워져야 하는 부품을 손으로 타격해 끼우는 작업 등']]}
+];
+/* REBA 표 4: [몸통1–5][목1–3][다리1–4], 표 9: [윗팔1–6][아래팔1–2][손목1–3] */
+const TABLE_A=[[[1,2,3,4],[1,2,3,4],[3,3,5,6]],[[2,3,4,5],[3,4,5,6],[4,5,6,7]],[[2,4,5,6],[4,5,6,7],[5,6,7,8]],[[3,5,6,7],[5,6,7,8],[6,7,8,9]],[[4,6,7,8],[6,7,8,9],[7,8,9,9]]];
+const TABLE_B=[[[1,2,2],[1,2,3]],[[1,2,3],[2,3,4]],[[3,4,5],[4,5,5]],[[4,5,5],[5,6,7]],[[6,7,8],[7,8,8]],[[7,8,8],[8,9,9]]];
+
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const pad=n=>String(n).padStart(2,'0');
+
+/* ---------- 부담작업 렌더 ---------- */
+$('#bwList').innerHTML = BURDEN.map(b=>`
+  <article class="bw" id="bw${b.no}">
+    <div class="bw-head"><span class="no">부담작업 ${b.no}호</span><h4>${b.title}</h4><span class="tag ${b.cat[0]}">${b.cat[1]}</span></div>
+    <div class="bw-body">
+      <div class="frame" data-cap="부담작업 ${b.no}호 · ${b.title}"><img src="img/bw${pad(b.no)}.jpg" alt="부담작업 ${b.no}호 ${b.title} 예시 그림" loading="lazy"></div>
+      <div>
+        <p class="bw-crit">${b.crit}</p>
+        <div class="kv"><div><span>유해요인</span><b>${b.factor}</b></div><div><span>신체부위</span><b>${b.body}</b></div><div><span>노출시간</span><b>${b.time}</b></div></div>
+        <ul class="dot bw-note">${b.notes.map(n=>`<li>${n[0]?`<span class="t">${n[0]}</span> — `:''}${n[1]}</li>`).join('')}</ul>
+      </div>
+    </div>
+  </article>`).join('');
+$('#bwIndex').insertAdjacentHTML('beforeend', BURDEN.map(b=>`<a href="#bw${b.no}" title="${b.title}">${b.no}</a>`).join(''));
+
+/* ---------- REBA 행렬 ---------- */
+function matrix(el, data, rowLabel, groupLabel, subLabel, groups, subs){
+  let h=`<thead><tr><th rowspan="3">${rowLabel}</th><th colspan="${groups*subs}">${groupLabel}</th></tr><tr>`;
+  for(let g=1;g<=groups;g++) h+=`<th colspan="${subs}">${g}</th>`;
+  h+='</tr><tr>'; for(let g=1;g<=groups;g++) for(let s=1;s<=subs;s++) h+=`<th data-c="${(g-1)*subs+s}">${s}</th>`;
+  h+=`</tr></thead><tbody>`;
+  data.forEach((row,r)=>{ h+=`<tr><th data-r="${r+1}" class="c">${r+1}</th>`; row.forEach((grp,g)=>grp.forEach((v,s)=>h+=`<td data-r="${r+1}" data-c="${g*subs+s+1}" title="${rowLabel} ${r+1} · ${groupLabel} ${g+1} · ${subLabel} ${s+1}">${v}</td>`)); h+='</tr>'; });
+  el.innerHTML=h+'</tbody>';
+  el.addEventListener('mouseover',e=>{const td=e.target.closest('td'); if(!td) return; el.querySelectorAll('.hl,.hit').forEach(x=>x.classList.remove('hl','hit'));
+    el.querySelectorAll(`[data-r="${td.dataset.r}"],[data-c="${td.dataset.c}"]`).forEach(x=>x.classList.add('hl')); td.classList.remove('hl'); td.classList.add('hit');});
+  el.addEventListener('mouseleave',()=>el.querySelectorAll('.hl,.hit').forEach(x=>x.classList.remove('hl','hit')));
+}
+matrix($('#mxA'),TABLE_A,'몸통','목','다리',3,4);
+matrix($('#mxB'),TABLE_B,'윗팔','아래팔','손목',2,3);
+
+/* ---------- 목차 (data-toc에서 자동 생성) ---------- */
+const chapters=$$('#doc .chapter');
+$('#tocList').innerHTML = chapters.map((c,i)=>`<li><a href="#${c.id}" data-t="${c.id}">${i+1}. ${c.dataset.toc}</a><ol>${$$('.sec[data-toc]',c).map(s=>`<li><a href="#${s.id}" data-t="${s.id}">${(s.querySelector('h3 .no')||{}).textContent||''} ${s.dataset.toc}</a></li>`).join('')}</ol></li>`).join('');
+$('#tocSel').innerHTML = '<option value="">목차로 이동</option>'+chapters.map((c,i)=>`<option value="${c.id}">${i+1}. ${c.dataset.toc}</option>`+$$('.sec[data-toc]',c).map(s=>`<option value="${s.id}">　${(s.querySelector('h3 .no')||{}).textContent||'·'} ${s.dataset.toc}</option>`).join('')).join('');
+$('#tocSel').addEventListener('change',e=>{ if(e.target.value){ document.getElementById(e.target.value).scrollIntoView(); e.target.value=''; }});
+
+const targets=$$('#doc .chapter, #doc .sec[data-toc]');
+const tocLinks=$$('.toc a');
+function spy(){
+  const y=$('#siteTop').offsetHeight+40; let cur=targets[0];
+  for(const t of targets){ if(t.getBoundingClientRect().top - y <= 0) cur=t; }
+  tocLinks.forEach(a=>a.classList.toggle('on',a.dataset.t===cur.id));
+  const doc=document.documentElement, max=doc.scrollHeight-innerHeight;
+  $('#progress').style.width = ($('#overview').classList.contains('on') && max>0 ? Math.min(100,scrollY/max*100) : 0)+'%';
+  $('#totop').classList.toggle('show', scrollY>700);
+}
+addEventListener('scroll',spy,{passive:true}); addEventListener('resize',spy);
+
+/* ---------- 상단 탭 ---------- */
+function openTab(id, push=true){
+  if(!document.getElementById(id) || !$('#'+id).classList.contains('panel')) id='overview';
+  $$('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.panel===id));
+  $$('.panel').forEach(p=>p.classList.toggle('on', p.id===id));
+  if(push) history.replaceState(null,'','#'+id);
+  scrollTo(0,0); spy();
+}
+$$('.tab').forEach(t=>t.addEventListener('click',()=>openTab(t.dataset.panel)));
+$('.tabs').addEventListener('keydown',e=>{ if(!['ArrowLeft','ArrowRight'].includes(e.key)) return; const ts=$$('.tab'); const i=ts.findIndex(t=>t.getAttribute('aria-selected')==='true'); const n=ts[(i+(e.key==='ArrowRight'?1:-1)+ts.length)%ts.length]; openTab(n.dataset.panel); n.focus(); });
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.go)));
+// 초기 진입: #survey 등 탭 해시, 또는 본문 앵커(#c3-4)
+(()=>{ const h=location.hash.slice(1); if(h && $('#'+h)?.classList.contains('panel')) openTab(h,false); })();
+
+/* ---------- 접이식 조문 ---------- */
+$$('.law.collapsible .law-h').forEach(h=>{ const t=()=>{const o=h.parentElement.classList.toggle('open'); h.setAttribute('aria-expanded',o);}; h.addEventListener('click',t); h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}}); });
+
+/* ---------- 예방관리 순환 강조 ---------- */
+$$('#cycle .cyc').forEach(c=>c.addEventListener('mouseenter',()=>{ $$('#cycle .cyc').forEach(x=>x.classList.toggle('on',x===c)); }));
+
+/* ---------- 그림 확대 ---------- */
+const lb=$('#lb'); let lastF=null;
+document.addEventListener('click',e=>{ const f=e.target.closest('.frame'); if(!f) return; const img=f.querySelector('img'); lastF=f;
+  $('img',lb).src=img.src; $('img',lb).alt=img.alt; $('p',lb).textContent=f.dataset.cap||img.alt; lb.classList.add('open'); $('button',lb).focus(); });
+function closeLb(){ lb.classList.remove('open'); if(lastF) lastF.focus?.(); }
+lb.addEventListener('click',e=>{ if(e.target===lb||e.target.tagName==='BUTTON') closeLb(); });
+addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
+$$('.frame').forEach(f=>{ f.tabIndex=0; f.setAttribute('role','button'); f.addEventListener('keydown',e=>{ if(e.key==='Enter') f.click(); }); });
+
+/* ---------- 기타 ---------- */
+$('#totop').addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+$('#printBtn').addEventListener('click',()=>{ $$('.panel').forEach(p=>p.classList.toggle('print',p.classList.contains('on'))); print(); });
+spy();
+</script>
+</body>
+</html>
